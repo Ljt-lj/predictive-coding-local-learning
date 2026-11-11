@@ -10,7 +10,9 @@ runs_dir: runs
 T_infer: 20
 T_infer_test: 200
 lr_infer: 0.05
-lr_learn: 0.003
+lr_learn: 0.001
+T_learn: 8
+early_stop_patience: 2
 activation: tanh
 input_scale: bipolar
 use_mixed_precision: true

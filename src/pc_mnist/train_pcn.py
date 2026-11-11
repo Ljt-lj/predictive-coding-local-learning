@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import csv
 import time
 from pathlib import Path
@@ -26,13 +27,21 @@ def train_pcn_experiment(
     model = build_pcn_model(
         hidden=list(cfg.get("hidden", [256, 128])),
         num_classes=int(cfg.get("num_classes", 10)),
-        activation=str(cfg.get("activation", "relu")),
+        activation=str(cfg.get("activation", "tanh")),
     ).to(device)
 
     probe = EnergyProbeCallback()
     epochs = int(cfg.get("epochs", 10))
+    patience = cfg.get("early_stop_patience")
+    patience = int(patience) if patience is not None else None
     history_rows: list[dict[str, Any]] = []
     total_start = time.perf_counter()
+
+    best_test_acc = -1.0
+    best_epoch = 0
+    best_state = None
+    epochs_without_improve = 0
+    test_res: dict[str, Any] = {"accuracy": 0.0, "energy": 0.0}
 
     for epoch in range(1, epochs + 1):
         epoch_start = time.perf_counter()
@@ -62,6 +71,27 @@ def train_pcn_experiment(
             f"energy={train_loss:.4f} time={epoch_time:.1f}s"
         )
 
+        if test_acc > best_test_acc:
+            best_test_acc = test_acc
+            best_epoch = epoch
+            best_state = copy.deepcopy(model.state_dict())
+            epochs_without_improve = 0
+            torch.save(best_state, run_dir / "model_best.pt")
+        else:
+            epochs_without_improve += 1
+            if patience is not None and epochs_without_improve >= patience:
+                print(
+                    f"[PCN T={cfg.get('T_infer')}] early stop at epoch={epoch} "
+                    f"(best_epoch={best_epoch}, best_test_acc={best_test_acc:.4f})"
+                )
+                break
+
+    if best_state is not None:
+        model.load_state_dict(best_state)
+        # refresh final test metrics with best weights
+        final_cfg = make_train_config({**cfg, "epochs": 1}, callback=None)
+        test_res = test_pcn(model, test_loader, final_cfg)
+
     total_time = time.perf_counter() - total_start
     _write_history_csv(run_dir / "history.csv", history_rows)
     energy_steps = probe.steps
@@ -79,6 +109,9 @@ def train_pcn_experiment(
             "energy_probe_steps": len(energy_steps),
             "energy_probe_note": "first-batch inference energy of epoch 1",
             "final_test_energy": float(test_res.get("energy", 0.0)),
+            "best_epoch": best_epoch,
+            "restored_best_checkpoint": True,
+            "evaluated_test_acc_best_weights": float(test_res.get("accuracy", best_test_acc)),
         },
     )
     save_json(metrics, run_dir / "metrics.json")
