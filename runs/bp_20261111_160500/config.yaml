@@ -1,0 +1,15 @@
+method: bp
+seed: 42
+batch_size: 128
+epochs: 10
+hidden:
+- 256
+- 128
+num_classes: 10
+data_dir: data
+num_workers: 0
+runs_dir: runs
+lr: 0.001
+weight_decay: 0.0
+optimizer: adam
+input_scale: unit

@@ -1,0 +1,9 @@
+{
+  "status": "completed",
+  "last_epoch": 10,
+  "target_epochs": 10,
+  "updated_at": "2026-11-11T08:58:49.716623+00:00",
+  "method": "bp",
+  "run_id": "bp_20261111_165759",
+  "best_test_acc": 0.9793
+}
