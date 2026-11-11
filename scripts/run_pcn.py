@@ -62,7 +62,7 @@ def main() -> None:
     # PCN defaults: tanh + bipolar scaling (ReLU+[0,1] often stalls near chance)
     cfg.setdefault("activation", "tanh")
     cfg.setdefault("input_scale", "bipolar")
-    cfg.setdefault("lr_learn", 0.01)
+    cfg.setdefault("lr_learn", 0.005)
 
     train_loader, test_loader = build_mnist_loaders(
         data_dir=data_dir,

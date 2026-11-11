@@ -83,7 +83,7 @@ def main() -> None:
             "T_infer_test": 80,
             "T_learn": 16,
             "lr_infer": 0.05,
-            "lr_learn": 0.01,
+            "lr_learn": 0.005,
             "activation": "tanh",
             "input_scale": "bipolar",
             "batch_size": 64,
