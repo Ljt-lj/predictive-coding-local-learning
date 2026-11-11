@@ -90,6 +90,9 @@ def load_checkpoint(run_dir: Path, map_location: str | torch.device = "cpu") -> 
 
 
 def run_prefix(method: str, cfg: dict[str, Any]) -> str:
+    custom = cfg.get("run_prefix")
+    if custom:
+        return f"{custom}_"
     if method == "bp":
         return "bp_"
     t = cfg.get("T_infer")

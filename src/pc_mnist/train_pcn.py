@@ -18,7 +18,13 @@ from .checkpoint import (
 )
 from .logging_utils import setup_run_logger
 from .metrics import summarize_run
-from .models_pcn import EnergyProbeCallback, build_pcn_model, count_pcn_parameters, make_train_config
+from .models_pcn import (
+    EnergyProbeCallback,
+    build_pcn_model,
+    count_pcn_parameters,
+    make_train_config,
+    resolve_lr_learn,
+)
 from .utils import save_json
 
 
@@ -111,8 +117,17 @@ def train_pcn_experiment(
         epoch_start = time.perf_counter()
         # Capture energy curve once: first epoch of a fresh run
         callback = probe if (epoch == 1 and not energy_steps) else None
-        epoch_cfg_dict = {**cfg, "epochs": 1}
-        train_config = make_train_config(epoch_cfg_dict, callback=callback)
+        lr_learn = resolve_lr_learn(cfg, epoch)
+        epoch_cfg_dict = {**cfg, "epochs": 1, "lr_learn": lr_learn}
+        train_config = make_train_config(epoch_cfg_dict, callback=callback, epoch=epoch)
+        logger.info(
+            "[PCN T=%s] epoch=%s/%s lr_learn=%s T_learn=%s",
+            cfg.get("T_infer"),
+            epoch,
+            epochs,
+            lr_learn,
+            cfg.get("T_learn"),
+        )
 
         train_hist = train_pcn(model, train_loader, train_config)
         test_res = test_pcn(model, test_loader, train_config)

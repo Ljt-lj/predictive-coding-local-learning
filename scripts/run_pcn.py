@@ -139,7 +139,10 @@ def main() -> None:
     )
 
     if run_dir is None:
-        run_id = make_run_id("pcn", {"T_infer": cfg.get("T_infer")})
+        run_id = make_run_id(
+            str(cfg.get("run_prefix", "pcn")),
+            {"T_infer": cfg.get("T_infer")},
+        )
         run_dir = prepare_run_dir(runs_dir, run_id)
         save_config(cfg, run_dir)
     else:

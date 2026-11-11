@@ -94,7 +94,9 @@ def make_run_id(method: str, extras: dict[str, Any] | None = None) -> str:
     stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     parts = [method]
     if extras:
-        if "T_infer" in extras and extras["T_infer"] is not None:
+        if extras.get("tag"):
+            parts.append(str(extras["tag"]))
+        if extras.get("T_infer") is not None:
             parts.append(f"t{extras['T_infer']}")
     parts.append(stamp)
     return "_".join(str(p) for p in parts)

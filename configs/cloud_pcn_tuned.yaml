@@ -1,0 +1,24 @@
+# Cloud variant of pcn_tuned.yaml (larger batch / more workers)
+method: pcn
+run_prefix: pcn_tuned
+seed: 42
+batch_size: 512
+epochs: 20
+hidden: [512]
+num_classes: 10
+data_dir: data
+num_workers: 4
+runs_dir: runs
+T_infer: 100
+T_infer_test: 500
+T_learn: 32
+lr_infer: 0.05
+lr_learn: 0.005
+lr_learn_schedule:
+  - {epoch: 1, lr: 0.005}
+  - {epoch: 4, lr: 0.002}
+  - {epoch: 10, lr: 0.001}
+early_stop_patience: 5
+activation: tanh
+input_scale: bipolar
+use_mixed_precision: true

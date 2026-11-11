@@ -57,6 +57,12 @@ python scripts/run_all.py
 
 # 魔搭大显存实例推荐：
 python scripts/run_all.py --cloud --device cuda
+
+# 基线结果备份：results/baseline_20261111/
+# 优化版 PCN（更宽网络 + lr 衰减 + 更长训练，不靠加 T_infer）：
+python scripts/run_pcn.py --config configs/pcn_tuned.yaml
+# 云端：
+python scripts/run_pcn.py --config configs/cloud_pcn_tuned.yaml --device cuda
 ```
 
 ### 日志与断点续跑
