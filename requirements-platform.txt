@@ -1,0 +1,8 @@
+# For cloud images that already ship a hardware-matched PyTorch
+# (e.g. ModelScope AMD/ROCm: ubuntu22.04-rocm*-py312-torch*).
+# Do NOT install torch/torchvision from this file — that would overwrite ROCm builds.
+pcn-torch>=1.1.0
+matplotlib>=3.7
+PyYAML>=6.0
+tqdm>=4.66
+rich>=13.0

@@ -1,0 +1,10 @@
+# Local / generic install. On ModelScope AMD/ROCm free instances,
+# prefer requirements-platform.txt and KEEP the preinstalled torch.
+torch>=2.0
+torchvision>=0.15
+pcn-torch>=1.1.0
+numpy>=1.24
+matplotlib>=3.7
+PyYAML>=6.0
+tqdm>=4.66
+rich>=13.0

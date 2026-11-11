@@ -1,0 +1,15 @@
+method: pcn
+seed: 42
+batch_size: 512
+epochs: 10
+hidden: [256, 128]
+num_classes: 10
+data_dir: data
+num_workers: 4
+runs_dir: runs
+T_infer: 50
+T_infer_test: 200
+lr_infer: 0.05
+lr_learn: 0.005
+activation: relu
+use_mixed_precision: true

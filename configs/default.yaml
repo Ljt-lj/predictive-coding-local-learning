@@ -1,0 +1,11 @@
+seed: 42
+batch_size: 128
+epochs: 10
+hidden: [256, 128]
+num_classes: 10
+data_dir: data
+num_workers: 0
+runs_dir: runs
+smoke: false
+train_subset: null
+test_subset: null
