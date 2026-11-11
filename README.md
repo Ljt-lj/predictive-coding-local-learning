@@ -59,6 +59,28 @@ python scripts/run_all.py
 python scripts/run_all.py --cloud --device cuda
 ```
 
+### 日志与断点续跑
+
+每个 run 目录会写入：
+
+- `train.log` — 训练日志（控制台同步）
+- `checkpoint.pt` — 每个 epoch 后的断点（完成后删除）
+- `status.json` — `running` / `completed`
+- `history.csv` / `metrics.json` / `model_best.pt`
+
+```bash
+# 续跑最近一次未完成的同配置实验
+python scripts/run_pcn.py --config configs/pcn_t50.yaml --resume
+python scripts/run_bp.py --config configs/bp.yaml --resume
+
+# 指定某个 run 目录续跑
+python scripts/run_pcn.py --run-dir runs/pcn_t50_20261111_162712
+
+# 全量套件：已完成的跳过，未完成的从断点继续
+python scripts/run_all.py --resume
+python scripts/run_all.py --cloud --device cuda --resume
+```
+
 出图：
 
 ```bash

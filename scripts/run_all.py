@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Run BP + PCN (T=20/50/100) sequentially."""
+"""Run BP + PCN (T=20/50/100) sequentially, with optional resume/skip."""
 from __future__ import annotations
 
 import argparse
@@ -22,6 +22,11 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--device", default=None)
     p.add_argument("--train-subset", type=int, default=None)
     p.add_argument("--test-subset", type=int, default=None)
+    p.add_argument(
+        "--resume",
+        action="store_true",
+        help="Resume incomplete runs; skip experiments that already completed",
+    )
     return p.parse_args()
 
 
@@ -44,6 +49,8 @@ def main() -> None:
         common += ["--train-subset", str(args.train_subset)]
     if args.test_subset is not None:
         common += ["--test-subset", str(args.test_subset)]
+    if args.resume:
+        common += ["--resume", "--skip-if-complete"]
 
     if args.cloud:
         bp_cfg = "configs/cloud_bp.yaml"

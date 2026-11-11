@@ -79,6 +79,15 @@ python scripts/run_all.py --cloud --device cuda
 python scripts/run_all.py --cloud --device cuda --epochs 5
 ```
 
+断点续跑（中断后接着训，已完成的组会跳过）：
+
+```bash
+python scripts/run_all.py --cloud --device cuda --resume
+# 或单独：
+python scripts/run_pcn.py --config configs/cloud_pcn_t50.yaml --device cuda --resume
+tail -f runs/<run_id>/train.log
+```
+
 分步跑也可以：
 
 ```bash
