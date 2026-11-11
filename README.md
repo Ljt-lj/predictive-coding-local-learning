@@ -74,7 +74,9 @@ python scripts/make_figures.py --runs-dir runs --out-dir figures
 
 ## 架构
 
-- BP / PCN 对齐：`784 → 256 → 128 → 10`，隐藏层 ReLU
+- 层宽对齐：`784 → 256 → 128 → 10`
+- BP：ReLU，输入 `[0,1]`
+- PCN：`tanh`，输入映射到 `[-1,1]`（`pcn-torch` 生成式 PC 在 ReLU 下易卡在随机水平；层宽仍与 BP 对齐）
 - PCN 使用 [`pcn-torch`](https://pypi.org/project/pcn-torch/)（局部推理 + 局部学习；测试时不 clamp 标签）
 
 ## 结果目录

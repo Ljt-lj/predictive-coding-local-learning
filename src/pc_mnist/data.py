@@ -12,6 +12,13 @@ class FlattenTransform:
         return x.view(-1)
 
 
+class ScaleToBipolar:
+    """Map [0, 1] tensors to [-1, 1]. Better matched to tanh PCNs."""
+
+    def __call__(self, x: torch.Tensor) -> torch.Tensor:
+        return x * 2.0 - 1.0
+
+
 def build_mnist_loaders(
     data_dir: str | Path,
     batch_size: int = 128,
@@ -19,14 +26,22 @@ def build_mnist_loaders(
     train_subset: int | None = None,
     test_subset: int | None = None,
     pin_memory: bool | None = None,
+    input_scale: str = "unit",
 ) -> tuple[DataLoader, DataLoader]:
+    """Build MNIST loaders.
+
+    Args:
+        input_scale: ``unit`` keeps pixels in [0, 1] (BP default);
+            ``bipolar`` maps to [-1, 1] (recommended for tanh PCN).
+    """
     root = Path(data_dir)
-    transform = transforms.Compose(
-        [
-            transforms.ToTensor(),
-            FlattenTransform(),
-        ]
-    )
+    transform_list: list = [transforms.ToTensor()]
+    if input_scale == "bipolar":
+        transform_list.append(ScaleToBipolar())
+    elif input_scale != "unit":
+        raise ValueError(f"Unknown input_scale={input_scale!r}; use 'unit' or 'bipolar'")
+    transform_list.append(FlattenTransform())
+    transform = transforms.Compose(transform_list)
     train_set = datasets.MNIST(root=str(root), train=True, download=True, transform=transform)
     test_set = datasets.MNIST(root=str(root), train=False, download=True, transform=transform)
 

@@ -53,12 +53,15 @@ def main() -> None:
     if not Path(data_dir).is_absolute():
         data_dir = project_root() / data_dir
 
+    cfg.setdefault("input_scale", "unit")
+
     train_loader, test_loader = build_mnist_loaders(
         data_dir=data_dir,
         batch_size=int(cfg.get("batch_size", 128)),
         num_workers=int(cfg.get("num_workers", 0)),
         train_subset=cfg.get("train_subset"),
         test_subset=cfg.get("test_subset"),
+        input_scale=str(cfg.get("input_scale", "unit")),
     )
 
     run_id = make_run_id("bp")

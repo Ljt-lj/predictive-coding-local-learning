@@ -59,12 +59,18 @@ def main() -> None:
     if not Path(data_dir).is_absolute():
         data_dir = project_root() / data_dir
 
+    # PCN defaults: tanh + bipolar scaling (ReLU+[0,1] often stalls near chance)
+    cfg.setdefault("activation", "tanh")
+    cfg.setdefault("input_scale", "bipolar")
+    cfg.setdefault("lr_learn", 0.01)
+
     train_loader, test_loader = build_mnist_loaders(
         data_dir=data_dir,
         batch_size=int(cfg.get("batch_size", 128)),
         num_workers=int(cfg.get("num_workers", 0)),
         train_subset=cfg.get("train_subset"),
         test_subset=cfg.get("test_subset"),
+        input_scale=str(cfg.get("input_scale", "bipolar")),
     )
 
     run_id = make_run_id("pcn", {"T_infer": cfg.get("T_infer")})

@@ -9,12 +9,15 @@ from torch import nn
 def build_pcn_model(
     hidden: list[int] | None = None,
     num_classes: int = 10,
-    activation: str = "relu",
+    activation: str = "tanh",
 ) -> nn.Module:
     """Build a PredictiveCodingNetwork aligned with BP MLP widths.
 
     Mapping: dims=[784, *hidden], output_dim=num_classes.
     Example: hidden=[256, 128] -> 784 -> 256 -> 128, readout to 10.
+
+    Note: prefer ``tanh`` over ``relu`` for this generative PCN formulation;
+    ReLU's zero derivative blocks local error flow and often stalls near chance.
     """
     try:
         from pcn_torch import PredictiveCodingNetwork
