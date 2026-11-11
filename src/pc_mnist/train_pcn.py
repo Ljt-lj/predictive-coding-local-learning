@@ -145,12 +145,12 @@ def train_pcn_experiment(
             "epoch": epoch,
             "train_acc": float(train_acc),
             "test_acc": test_acc,
-            "train_loss": float(train_loss),
+            "train_loss": float(train_loss) if train_loss == train_loss else float("nan"),
             "epoch_time_sec": epoch_time,
         }
         history_rows.append(row)
         logger.info(
-            "[PCN T=%s] epoch=%s train_acc=%.4f test_acc=%.4f energy=%.4f time=%.1fs",
+            "[PCN T=%s] epoch=%s train_acc=%.4f test_acc=%.4f energy=%s time=%.1fs",
             cfg.get("T_infer"),
             epoch,
             train_acc,
@@ -158,6 +158,33 @@ def train_pcn_experiment(
             train_loss,
             epoch_time,
         )
+
+        # Numerical blow-up guard (e.g. too-high lr_infer on wide single-layer nets)
+        if train_loss != train_loss or any(
+            (not torch.isfinite(p).all()) for p in model.parameters()
+        ):
+            logger.error(
+                "NaN/Inf detected at epoch=%s (energy=%s). Aborting this run. "
+                "Try lower lr_infer and/or a deeper hidden stack (e.g. [512,256]).",
+                epoch,
+                train_loss,
+            )
+            write_status(
+                run_dir,
+                status="failed",
+                last_epoch=epoch,
+                target_epochs=epochs,
+                extra={
+                    "method": "pcn",
+                    "run_id": run_id,
+                    "T_infer": cfg.get("T_infer"),
+                    "error": "nan_energy_or_weights",
+                },
+            )
+            raise RuntimeError(
+                f"PCN training diverged at epoch {epoch}: energy={train_loss}. "
+                "Stop this run and use the revised pcn_tuned config (lower lr_infer, hidden=[512,256])."
+            )
 
         if test_acc > best_test_acc:
             best_test_acc = test_acc

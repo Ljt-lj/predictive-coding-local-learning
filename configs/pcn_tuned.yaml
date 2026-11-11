@@ -1,12 +1,11 @@
-# Optimized PCN follow-up (vs baseline 2026-11-11)
-# Changes: wider net, lr schedule, fixed T_learn, longer training, larger T_infer_test
-# Keep T_infer=100 (data showed little gain beyond that for accuracy)
+# Optimized PCN follow-up (stable revision)
+# Avoid single wide latent + high lr_infer (causes NaN with T_infer=100)
 method: pcn
 run_prefix: pcn_tuned
 seed: 42
 batch_size: 128
 epochs: 20
-hidden: [512]
+hidden: [512, 256]
 num_classes: 10
 data_dir: data
 num_workers: 0
@@ -14,12 +13,13 @@ runs_dir: runs
 T_infer: 100
 T_infer_test: 500
 T_learn: 32
-lr_infer: 0.05
-lr_learn: 0.005
+lr_infer: 0.02
+lr_learn: 0.003
 lr_learn_schedule:
-  - {epoch: 1, lr: 0.005}
-  - {epoch: 4, lr: 0.002}
-  - {epoch: 10, lr: 0.001}
+  - {epoch: 1, lr: 0.003}
+  - {epoch: 4, lr: 0.0015}
+  - {epoch: 10, lr: 0.0008}
 early_stop_patience: 5
 activation: tanh
 input_scale: bipolar
+use_mixed_precision: false
