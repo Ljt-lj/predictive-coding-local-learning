@@ -1,0 +1,12 @@
+2026-11-11 17:31:22 | INFO | Start PCN training epochs=10 T_infer=100 device=cpu resume=False
+2026-11-11 17:34:14 | INFO | [PCN T=100] epoch=1 train_acc=0.7922 test_acc=0.7356 energy=3.6074 time=172.9s
+2026-11-11 17:37:08 | INFO | [PCN T=100] epoch=2 train_acc=0.7792 test_acc=0.7394 energy=2.6110 time=173.1s
+2026-11-11 17:40:20 | INFO | [PCN T=100] epoch=3 train_acc=0.7750 test_acc=0.7410 energy=2.3765 time=192.7s
+2026-11-11 17:44:58 | INFO | [PCN T=100] epoch=4 train_acc=0.7749 test_acc=0.7401 energy=2.2082 time=277.9s
+2026-11-11 17:47:52 | INFO | [PCN T=100] epoch=5 train_acc=0.7749 test_acc=0.7551 energy=2.1785 time=173.5s
+2026-11-11 17:50:46 | INFO | [PCN T=100] epoch=6 train_acc=0.7770 test_acc=0.7533 energy=2.0982 time=173.4s
+2026-11-11 17:53:38 | INFO | [PCN T=100] epoch=7 train_acc=0.7754 test_acc=0.7514 energy=2.0920 time=172.8s
+2026-11-11 17:56:30 | INFO | [PCN T=100] epoch=8 train_acc=0.7770 test_acc=0.7617 energy=2.1108 time=171.1s
+2026-11-11 18:10:55 | INFO | [PCN T=100] epoch=9 train_acc=0.7763 test_acc=0.7581 energy=2.1482 time=865.0s
+2026-11-11 18:13:46 | INFO | [PCN T=100] epoch=10 train_acc=0.7768 test_acc=0.7638 energy=2.1511 time=171.5s
+2026-11-11 18:13:59 | INFO | PCN done. best_test_acc=0.7638 best_epoch=10

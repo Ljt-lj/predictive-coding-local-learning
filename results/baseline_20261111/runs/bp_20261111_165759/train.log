@@ -1,0 +1,12 @@
+2026-11-11 16:57:59 | INFO | Start BP training epochs=10 device=cpu resume=False
+2026-11-11 16:58:04 | INFO | [BP] epoch=1 train_acc=0.9004 test_acc=0.9534 loss=0.3530 time=4.9s
+2026-11-11 16:58:09 | INFO | [BP] epoch=2 train_acc=0.9602 test_acc=0.9674 loss=0.1353 time=4.9s
+2026-11-11 16:58:14 | INFO | [BP] epoch=3 train_acc=0.9730 test_acc=0.9713 loss=0.0891 time=4.9s
+2026-11-11 16:58:19 | INFO | [BP] epoch=4 train_acc=0.9801 test_acc=0.9771 loss=0.0632 time=5.0s
+2026-11-11 16:58:24 | INFO | [BP] epoch=5 train_acc=0.9851 test_acc=0.9753 loss=0.0483 time=4.9s
+2026-11-11 16:58:29 | INFO | [BP] epoch=6 train_acc=0.9880 test_acc=0.9789 loss=0.0370 time=5.0s
+2026-11-11 16:58:34 | INFO | [BP] epoch=7 train_acc=0.9913 test_acc=0.9757 loss=0.0276 time=5.0s
+2026-11-11 16:58:39 | INFO | [BP] epoch=8 train_acc=0.9928 test_acc=0.9793 loss=0.0230 time=5.1s
+2026-11-11 16:58:44 | INFO | [BP] epoch=9 train_acc=0.9935 test_acc=0.9768 loss=0.0209 time=4.9s
+2026-11-11 16:58:49 | INFO | [BP] epoch=10 train_acc=0.9950 test_acc=0.9753 loss=0.0157 time=4.9s
+2026-11-11 16:58:49 | INFO | BP done. best_test_acc=0.9793

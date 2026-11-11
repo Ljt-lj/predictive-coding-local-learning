@@ -1,0 +1,7 @@
+2026-11-11 16:58:52 | INFO | Start PCN training epochs=10 T_infer=20 device=cpu resume=False
+2026-11-11 17:00:25 | INFO | [PCN T=20] epoch=1 train_acc=0.4790 test_acc=0.7215 energy=53.3079 time=93.7s
+2026-11-11 17:01:59 | INFO | [PCN T=20] epoch=2 train_acc=0.7414 test_acc=0.7530 energy=35.1029 time=93.9s
+2026-11-11 17:03:34 | INFO | [PCN T=20] epoch=3 train_acc=0.7400 test_acc=0.7486 energy=30.7998 time=94.2s
+2026-11-11 17:05:08 | INFO | [PCN T=20] epoch=4 train_acc=0.7293 test_acc=0.7374 energy=28.5962 time=93.9s
+2026-11-11 17:05:08 | INFO | [PCN T=20] early stop at epoch=4 (best_epoch=2, best_test_acc=0.7530)
+2026-11-11 17:05:20 | INFO | PCN done. best_test_acc=0.7530 best_epoch=2

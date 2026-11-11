@@ -1,0 +1,16 @@
+{
+  "run_id": "bp_20261111_165759",
+  "method": "bp",
+  "T_infer": null,
+  "T_infer_test": null,
+  "seed": 42,
+  "device": "cpu",
+  "param_count": 235146,
+  "epochs": 10,
+  "best_test_acc": 0.9793,
+  "final_test_acc": 0.9753,
+  "epochs_to_90pct": 1,
+  "mean_epoch_time_sec": 4.944360570699791,
+  "total_train_time_sec": 50.50933429700035,
+  "restored_best_checkpoint": true
+}

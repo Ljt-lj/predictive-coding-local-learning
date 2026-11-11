@@ -1,0 +1,11 @@
+{
+  "status": "completed",
+  "last_epoch": 4,
+  "target_epochs": 10,
+  "updated_at": "2026-11-11T09:05:20.894226+00:00",
+  "method": "pcn",
+  "run_id": "pcn_t20_20261111_165852",
+  "T_infer": 20,
+  "best_test_acc": 0.753,
+  "best_epoch": 2
+}

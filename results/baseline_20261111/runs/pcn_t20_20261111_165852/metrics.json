@@ -1,0 +1,21 @@
+{
+  "run_id": "pcn_t20_20261111_165852",
+  "method": "pcn",
+  "T_infer": 20,
+  "T_infer_test": 200,
+  "seed": 42,
+  "device": "cpu",
+  "param_count": 234752,
+  "epochs": 10,
+  "best_test_acc": 0.753,
+  "final_test_acc": 0.7374,
+  "epochs_to_90pct": null,
+  "mean_epoch_time_sec": 93.91628496074986,
+  "total_train_time_sec": 376.08923021400005,
+  "energy_probe_steps": 20,
+  "energy_probe_note": "first-batch inference energy of epoch 1",
+  "final_test_energy": 13.053394845199586,
+  "best_epoch": 2,
+  "restored_best_checkpoint": true,
+  "evaluated_test_acc_best_weights": 0.7525
+}
