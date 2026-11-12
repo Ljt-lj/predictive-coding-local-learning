@@ -1,0 +1,28 @@
+method: pcn
+run_prefix: pcn_tuned
+seed: 42
+batch_size: 128
+epochs: 20
+hidden:
+- 512
+- 256
+num_classes: 10
+data_dir: data
+num_workers: 0
+runs_dir: runs
+T_infer: 100
+T_infer_test: 500
+T_learn: 32
+lr_infer: 0.02
+lr_learn: 0.003
+lr_learn_schedule:
+- epoch: 1
+  lr: 0.003
+- epoch: 4
+  lr: 0.0015
+- epoch: 10
+  lr: 0.0008
+early_stop_patience: 5
+activation: tanh
+input_scale: bipolar
+use_mixed_precision: false

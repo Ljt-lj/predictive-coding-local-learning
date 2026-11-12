@@ -1,0 +1,44 @@
+2026-11-12 10:05:08 | INFO | Start PCN training epochs=20 T_infer=100 device=cpu resume=False
+2026-11-12 10:05:08 | INFO | [PCN T=100] epoch=1/20 lr_learn=0.003 T_learn=32
+2026-11-12 10:11:24 | INFO | [PCN T=100] epoch=1 train_acc=0.7850 test_acc=0.8022 energy=12.557741115856171 time=376.2s
+2026-11-12 10:11:24 | INFO | [PCN T=100] epoch=2/20 lr_learn=0.003 T_learn=32
+2026-11-12 10:17:47 | INFO | [PCN T=100] epoch=2 train_acc=0.7979 test_acc=0.7963 energy=8.162663239415487 time=383.4s
+2026-11-12 10:17:47 | INFO | [PCN T=100] epoch=3/20 lr_learn=0.003 T_learn=32
+2026-11-12 10:24:02 | INFO | [PCN T=100] epoch=3 train_acc=0.7973 test_acc=0.7984 energy=7.424214389832814 time=374.8s
+2026-11-12 10:24:02 | INFO | [PCN T=100] epoch=4/20 lr_learn=0.0015 T_learn=32
+2026-11-12 10:30:19 | INFO | [PCN T=100] epoch=4 train_acc=0.7993 test_acc=0.8102 energy=7.604476904614766 time=376.2s
+2026-11-12 10:30:19 | INFO | [PCN T=100] epoch=5/20 lr_learn=0.0015 T_learn=32
+2026-11-12 10:51:08 | INFO | [PCN T=100] epoch=5 train_acc=0.8007 test_acc=0.8062 energy=7.446378000529607 time=1249.7s
+2026-11-12 10:51:08 | INFO | [PCN T=100] epoch=6/20 lr_learn=0.0015 T_learn=32
+2026-11-12 10:57:27 | INFO | [PCN T=100] epoch=6 train_acc=0.8001 test_acc=0.8074 energy=7.351211711756388 time=378.6s
+2026-11-12 10:57:27 | INFO | [PCN T=100] epoch=7/20 lr_learn=0.0015 T_learn=32
+2026-11-12 11:20:19 | INFO | [PCN T=100] epoch=7 train_acc=0.8004 test_acc=0.8084 energy=7.255459049097697 time=1372.3s
+2026-11-12 11:20:19 | INFO | [PCN T=100] epoch=8/20 lr_learn=0.0015 T_learn=32
+2026-11-12 11:26:37 | INFO | [PCN T=100] epoch=8 train_acc=0.8001 test_acc=0.8118 energy=7.144123594760895 time=377.5s
+2026-11-12 11:26:37 | INFO | [PCN T=100] epoch=9/20 lr_learn=0.0015 T_learn=32
+2026-11-12 11:32:55 | INFO | [PCN T=100] epoch=9 train_acc=0.7994 test_acc=0.8089 energy=7.038653154595693 time=377.8s
+2026-11-12 11:32:55 | INFO | [PCN T=100] epoch=10/20 lr_learn=0.0008 T_learn=32
+2026-11-12 11:39:11 | INFO | [PCN T=100] epoch=10 train_acc=0.8032 test_acc=0.8108 energy=7.256514551067352 time=375.8s
+2026-11-12 11:39:11 | INFO | [PCN T=100] epoch=11/20 lr_learn=0.0008 T_learn=32
+2026-11-12 13:40:52 | INFO | Resuming PCN from checkpoint: next_epoch=11/20 T_infer=100 history_len=10
+2026-11-12 13:40:52 | INFO | Start PCN training epochs=20 T_infer=100 device=cpu resume=True
+2026-11-12 13:40:52 | INFO | [PCN T=100] epoch=11/20 lr_learn=0.0008 T_learn=32
+2026-11-12 13:47:12 | INFO | [PCN T=100] epoch=11 train_acc=0.8033 test_acc=0.8114 energy=7.171779944674174 time=379.9s
+2026-11-12 13:47:12 | INFO | [PCN T=100] epoch=12/20 lr_learn=0.0008 T_learn=32
+2026-11-12 13:53:27 | INFO | [PCN T=100] epoch=12 train_acc=0.8027 test_acc=0.8068 energy=7.1458933892885845 time=375.5s
+2026-11-12 13:53:27 | INFO | [PCN T=100] epoch=13/20 lr_learn=0.0008 T_learn=32
+2026-11-12 13:59:42 | INFO | [PCN T=100] epoch=13 train_acc=0.8030 test_acc=0.8122 energy=7.09062033068339 time=374.5s
+2026-11-12 13:59:42 | INFO | [PCN T=100] epoch=14/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:06:01 | INFO | [PCN T=100] epoch=14 train_acc=0.8024 test_acc=0.8142 energy=7.066756607373556 time=378.7s
+2026-11-12 14:06:01 | INFO | [PCN T=100] epoch=15/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:12:19 | INFO | [PCN T=100] epoch=15 train_acc=0.8026 test_acc=0.8097 energy=7.018519071785609 time=378.2s
+2026-11-12 14:12:19 | INFO | [PCN T=100] epoch=16/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:18:35 | INFO | [PCN T=100] epoch=16 train_acc=0.8021 test_acc=0.8132 energy=6.97895865723292 time=376.2s
+2026-11-12 14:18:36 | INFO | [PCN T=100] epoch=17/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:24:52 | INFO | [PCN T=100] epoch=17 train_acc=0.8027 test_acc=0.8132 energy=6.944325874487559 time=376.6s
+2026-11-12 14:24:52 | INFO | [PCN T=100] epoch=18/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:31:08 | INFO | [PCN T=100] epoch=18 train_acc=0.8033 test_acc=0.8122 energy=6.884410924720764 time=375.4s
+2026-11-12 14:31:08 | INFO | [PCN T=100] epoch=19/20 lr_learn=0.0008 T_learn=32
+2026-11-12 14:37:21 | INFO | [PCN T=100] epoch=19 train_acc=0.8014 test_acc=0.8127 energy=6.828935463682811 time=373.5s
+2026-11-12 14:37:21 | INFO | [PCN T=100] early stop at epoch=19 (best_epoch=14, best_test_acc=0.8142)
+2026-11-12 14:38:05 | INFO | PCN done. best_test_acc=0.8142 best_epoch=14
